@@ -1,138 +1,69 @@
-\# Desafio Técnico - Gestão de Projetos (FUNDEP)
+# Desafio Técnico - Gestão de Projetos (FUNDEP)
 
-
-
-\## Sobre o Projeto
-
+## Sobre o Projeto
 Esta aplicação é uma solução desenvolvida para atender ao Desafio Técnico de Backend. O objetivo é simular um sistema simplificado de cadastro e consulta de projetos, demonstrando conhecimentos em arquitetura de software, organização de código e tecnologias legadas do ecossistema .NET.
-
-
 
 A solução foi separada em camadas para garantir desacoplamento e organização, isolando a regra de negócio da interface do usuário.
 
-
-
-\## Tecnologias Utilizadas
-
-\* \*\*Linguagem:\*\* C# (.NET Framework 4.7.2)
-
-\* \*\*Frontend:\*\* ASP.NET Web Forms
-
-\* \*\*Backend/Serviço:\*\* WCF (Windows Communication Foundation) encapsulado em DLL
-
-\* \*\*Persistência:\*\* Em memória (Lista estática)
-
-\* \*\*IDE:\*\* Visual Studio
-
-
+## Tecnologias Utilizadas
+* **Linguagem:** C# (.NET Framework 4.7.2)
+* **Frontend:** ASP.NET Web Forms
+* **Backend/Serviço:** WCF (Windows Communication Foundation) encapsulado em DLL
+* **Persistência:** Em memória (Lista estática)
+* **IDE:** Visual Studio
 
 ---
 
-
-
-\## Estrutura da Solução
-
+## Estrutura da Solução
 A solução `DesafioFundep` está dividida em dois projetos principais:
 
+1.  **Fundep.Core (Class Library):**
+    * Contém a lógica de negócios e o contrato do serviço WCF.
+    * **Pastas:**
+        * `Database`: Define os objetos de dados (DTOs) com atributos `[DataContract]`.
+        * `Servico`: Define as interfaces `[ServiceContract]` e a implementação da lógica.
+    * *Decisão:* Separei esta camada para simular um ambiente onde o serviço poderia ser consumido por diferentes interfaces, não apenas a Web.
 
-
-1\.  \*\*Fundep.Core (Class Library):\*\*
-
-&nbsp;   \* Contém a lógica de negócios e o contrato do serviço WCF.
-
-&nbsp;   \* \*\*Pastas:\*\*
-
-&nbsp;       \* `Database`: Define os objetos de dados (DTOs) com atributos `\[DataContract]`.
-
-&nbsp;       \* `Servico`: Define as interfaces `\[ServiceContract]` e a implementação da lógica.
-
-&nbsp;   \* \*Decisão:\* Separei esta camada para simular um ambiente onde o serviço poderia ser consumido por diferentes interfaces, não apenas a Web.
-
-
-
-2\.  \*\*Fundep.Web (ASP.NET Web Application):\*\*
-
-&nbsp;   \* Interface do usuário baseada em Web Forms.
-
-&nbsp;   \* Utiliza `Code-Behind` para tratar eventos.
-
-&nbsp;   \* Consuma a DLL `Fundep.Core` diretamente.
-
-
+2.  **Fundep.Web (ASP.NET Web Application):**
+    * Interface do usuário baseada em Web Forms.
+    * Utiliza `Code-Behind` para tratar eventos.
+    * Consuma a DLL `Fundep.Core` diretamente.
 
 ---
 
+## Como Executar o Projeto
+> **Importante:** Como a solução utiliza múltiplos projetos, é necessário configurar a inicialização correta no Visual Studio.
 
-
-\## Como Executar o Projeto
-
-> \*\*Importante:\*\* Como a solução utiliza múltiplos projetos, é necessário configurar a inicialização correta no Visual Studio.
-
-
-
-1\.  Abra o arquivo `DesafioFundep.sln` no Visual Studio.
-
-2\.  No \*\*Solution Explorer\*\*, clique com o botão direito no projeto \*\*`Fundep.Web`\*\* e selecione \*\*"Set as StartUp Project"\*\* (Definir como Projeto de Inicialização).
-
-3\.  Garanta que a página principal seja carregada corretamente: Clique com o botão direito no arquivo \*\*`Default.aspx`\*\* e selecione \*\*"Set as Start Page"\*\*.
-
-4\.  Execute a aplicação pressionando `F5` ou o botão de "Play".
-
-
+1.  Abra o arquivo `DesafioFundep.sln` no Visual Studio.
+2.  No **Solution Explorer**, clique com o botão direito no projeto **`Fundep.Web`** e selecione **"Set as StartUp Project"** (Definir como Projeto de Inicialização).
+3.  Garanta que a página principal seja carregada corretamente: Clique com o botão direito no arquivo **`Default.aspx`** e selecione **"Set as Start Page"**.
+4.  Execute a aplicação pressionando `F5` ou o botão de "Play".
 
 ---
 
+## Decisões Técnicas e Arquiteturais
 
+### 1. WCF e Contratos de Dados
+Criei uma Interface (IProjetoService) para servir como um "contrato". Onde usei os atributos [DataMember] e [OperationContract] para controlar quais dados entram e saem da DLL, garantindo segurança e seguindo o padrão do WCF.
 
-\## Decisões Técnicas e Arquiteturais
-
-
-
-\### 1. WCF e Contratos de Dados
-
-Criei uma Interface (IProjetoService) para servir como um "contrato". Onde usei os atributos \[DataMember] e \[OperationContract] para controlar quais dados entram e saem da DLL, garantindo segurança e seguindo o padrão do WCF.
-
-
-
-\### 2. Validações e Regras de Negócio
-
+### 2. Validações e Regras de Negócio
 Implementei validação em duas etapas. No Frontend (ASP.NET), usou validadores visuais para impedir campos vazios. No Backend (C#), criou uma lógica com LINQ para impedir que dois projetos sejam cadastrados com o mesmo número, lançando uma exceção tratada e possibilitando a visualização pelo usuário na interface.
 
-
-
-\### 3. Experiência do Usuário (Loader)
-
+### 3. Experiência do Usuário (Loader)
 Escolhi ele para atender ao requisito de "Loader visual" sem precisar recarregar a página inteira (Postback total), deixando a navegação mais fluida.
 
-
-
 ---
 
-
-
-\## Melhorias Futuras
-
+## Melhorias Futuras
 Caso o projeto precisasse evoluir para um ambiente de produção, eu sugeriria as seguintes implementações:
 
-
-
-\*  Substituir a lista em memória por um banco de dados (SQL Server) usando ADO.NET ou Entity Framework.
-
-\*  Implementar `\[FaultContract]` para retornar erros personalizados e tipados para o frontend.
-
-\*  Configurar o serviço WCF para rodar via protocolo HTTP ou TCP em um servidor separado, ao invés de referência direta via DLL.
-
-\*  Adicionar testes unitários para a camada `Fundep.Core` para garantir a integridade das regras de negócio.
-
-\*  Separar páginas de cadastro e consulta em duas páginas distintas.
-
-
+*  Substituir a lista em memória por um banco de dados (SQL Server) usando ADO.NET ou Entity Framework.
+*  Implementar `[FaultContract]` para retornar erros personalizados e tipados para o frontend.
+*  Configurar o serviço WCF para rodar via protocolo HTTP ou TCP em um servidor separado, ao invés de referência direta via DLL.
+*  Adicionar testes unitários para a camada `Fundep.Core` para garantir a integridade das regras de negócio.
+*  Separar páginas de cadastro e consulta em duas páginas distintas.
 
 ---
 
-
-
-\*\*Autor:\*\* Cleyton Nobre
-
-\*\*Data:\*\* Janeiro/2026
-
+**Autor:** Cleyton Nobre
+**Data:** Janeiro/2026
