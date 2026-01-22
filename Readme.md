@@ -22,7 +22,7 @@ A solução `DesafioFundep` está dividida em dois projetos principais:
     * **Pastas:**
         * `Database`: Define os objetos de dados (DTOs) com atributos `[DataContract]`.
         * `Servico`: Define as interfaces `[ServiceContract]` e a implementação da lógica.
-    * *Decisão:* Separei esta camada para simular um ambiente onde o serviço poderia ser consumido por diferentes interfaces, não apenas a Web.
+    * *Decisão:* Separei esta camada para simular um ambiente real mais organizado onde a pasta `Database` trabalha com funcionalidade Definição das entidades, já o `Servico` é responsável por fazer a interface entre a base de dados e o frotend.
 
 2.  **Fundep.Web (ASP.NET Web Application):**
     * Interface do usuário baseada em Web Forms.
