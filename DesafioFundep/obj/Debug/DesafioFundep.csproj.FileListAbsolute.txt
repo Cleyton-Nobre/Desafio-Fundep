@@ -1,2 +1,0 @@
-C:\Users\Cleyton Nobre\source\repos\DesafioFundep\DesafioFundep\obj\Debug\DesafioFundep.csproj.AssemblyReference.cache
-C:\Users\Cleyton Nobre\source\repos\DesafioFundep\DesafioFundep\obj\Debug\DesafioFundep.csproj.CoreCompileInputs.cache

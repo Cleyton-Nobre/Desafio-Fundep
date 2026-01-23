@@ -4,3 +4,9 @@ C:\Users\Cleyton Nobre\source\repos\DesafioFundep\Fundep.Core\obj\Debug\Fundep.C
 C:\Users\Cleyton Nobre\source\repos\DesafioFundep\Fundep.Core\obj\Debug\Fundep.Core.csproj.CoreCompileInputs.cache
 C:\Users\Cleyton Nobre\source\repos\DesafioFundep\Fundep.Core\obj\Debug\Fundep.Core.dll
 C:\Users\Cleyton Nobre\source\repos\DesafioFundep\Fundep.Core\obj\Debug\Fundep.Core.pdb
+C:\Users\Cleyton Nobre\source\repos\Desafio-Fundep\Fundep.Core\obj\Debug\Fundep.Core.csproj.AssemblyReference.cache
+C:\Users\Cleyton Nobre\source\repos\Desafio-Fundep\Fundep.Core\obj\Debug\Fundep.Core.csproj.CoreCompileInputs.cache
+C:\Users\Cleyton Nobre\source\repos\Desafio-Fundep\Fundep.Core\obj\Debug\Fundep.Core.dll
+C:\Users\Cleyton Nobre\source\repos\Desafio-Fundep\Fundep.Core\obj\Debug\Fundep.Core.pdb
+C:\Users\Cleyton Nobre\source\repos\Desafio-Fundep\Fundep.Core\bin\Debug\Fundep.Core.dll
+C:\Users\Cleyton Nobre\source\repos\Desafio-Fundep\Fundep.Core\bin\Debug\Fundep.Core.pdb

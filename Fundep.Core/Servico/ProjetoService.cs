@@ -14,9 +14,12 @@ namespace Fundep.Core.Servico
         {
             if (projeto == null) throw new ArgumentNullException("Projeto inválido.");
 
+            //Verifica se algum campo númerico é zero
+            if (projeto.NumeroProjeto == 0 || projeto.NumeroSubprojeto == 0) throw new ArgumentNullException("Numero Projeto ou Numero Subprojeto");
+
             //Verifica se já existe alguém com esse número na lista
             bool jaExiste = _bancoDeDadosEmMemoria.Any(p => p.NumeroProjeto == projeto.NumeroProjeto);
-
+           
             if (jaExiste)
             {
                 throw new Exception($"Já existe um projeto cadastrado com o número {projeto.NumeroProjeto}.");
