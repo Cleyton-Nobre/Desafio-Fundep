@@ -44,13 +44,29 @@ A solução `DesafioFundep` está dividida em dois projetos principais:
 ## Decisões Técnicas e Arquiteturais
 
 ### 1. WCF e Contratos de Dados
-Criei uma Interface (IProjetoService) para servir como um "contrato". Onde usei os atributos [DataMember] e [OperationContract] para controlar quais dados entram e saem da DLL, garantindo segurança e seguindo o padrão do WCF.
+Criei uma Interface (IProjetoService) para servir como um "contrato". Onde usei os atributos [DataMember] e [OperationContract] para controlar quais dados entram e saem da DLL, garantindo segurança e seguindo o padrão do WCF. 
 
 ### 2. Validações e Regras de Negócio
 Implementei validação em duas etapas. No Frontend (ASP.NET), usou validadores visuais para impedir campos vazios. No Backend (C#), criou uma lógica com LINQ para impedir que dois projetos sejam cadastrados com o mesmo número, lançando uma exceção tratada e possibilitando a visualização pelo usuário na interface.
 
 ### 3. Experiência do Usuário (Loader)
 Escolhi ele para atender ao requisito de "Loader visual" sem precisar recarregar a página inteira (Postback total), deixando a navegação mais fluida.
+
+---
+
+## Definições dos Componentes de Arquitetura .NET
+
+### ASP.NET Web Forms
+É a camada visual, na qual funciona simulando uma aplicação Desktop na Web.
+
+### ▪ Code-behind
+É a lógica de controle da página. Onde ele é responsáveis por tratar os eventos como cliques, carregamento, entre outros gerados pelo usuário.
+
+### ▪ WCF (Windows Communication Foundation)
+É a camada de serviços, em que ela é como o Web Forms busca dados que estão em outro serviço ou sistemas.
+
+### ▪ Comunicação via DLL
+É uma biblioteca de código local, sendo essa usada para organizar o projeto em módulos reutilizáveis.
 
 ---
 
